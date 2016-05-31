@@ -4,7 +4,7 @@
 
     Helpdesk landing page. Please customize it to fit your needs.
 
-    Peter Rotich <peter@osticket.com>
+    Peter Kiprono Rotich <peter@osticket.com>
     Copyright (c)  2006-2013 osTicket
     http://www.osticket.com
 
