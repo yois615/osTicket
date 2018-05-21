@@ -163,6 +163,7 @@ var scp_prep = function() {
 
     $('form.save, form:has(table.list)').submit(function() {
         $(window).unbind('beforeunload');
+        $('input[type="submit"]').attr('disabled', true);
         $.toggleOverlay(true);
         $('#loading').show();
      });

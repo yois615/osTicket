@@ -45,6 +45,7 @@ $(document).ready(function(){
 
     $('form').submit(function() {
         $(window).unbind('beforeunload');
+        $('input[type="submit"]').attr('disabled', true);
         $('#overlay, #loading').show();
         return true;
        });
