@@ -1290,7 +1290,7 @@ implements RestrictedAccess, Threadable, Searchable {
                 if ($errors)
                     return false;
 
-                $this->closed = $this->lastupdate = SqlFunction::NOW();
+                $this->closed = SqlFunction::NOW();
                 $this->duedate = null;
                 if ($thisstaff && $set_closing_agent)
                     $this->staff = $thisstaff;
@@ -1304,7 +1304,7 @@ implements RestrictedAccess, Threadable, Searchable {
             case 'open':
                 // TODO: check current status if it allows for reopening
                 if ($this->isClosed()) {
-                    $this->closed = $this->lastupdate = $this->reopened = SqlFunction::NOW();
+                    $this->closed = $this->reopened = SqlFunction::NOW();
                     $ecb = function ($t) {
                         $t->logEvent('reopened', false, null, 'closed');
                     };
@@ -1676,7 +1676,6 @@ implements RestrictedAccess, Threadable, Searchable {
         global $cfg;
 
         $this->isanswered = 0;
-        $this->lastupdate = SqlFunction::NOW();
         $this->save();
 
 
@@ -3075,6 +3074,11 @@ implements RestrictedAccess, Threadable, Searchable {
             $this->setStatus($status);
         }
 
+        // DNVGL Specific:
+        // Only update `lastupdate` on new Internal Notes
+        if ($poster instanceof Staff)
+            $this->lastupdate = SqlFunction::NOW();
+
         $activity = $vars['activity'] ?: _S('New Internal Note');
         $this->onActivity(array(
             'activity' => $activity,
@@ -3367,8 +3371,6 @@ implements RestrictedAccess, Threadable, Searchable {
                     array('note' => $comments, 'title' => $title),
                     $_errors, $thisstaff, false);
         }
-
-        $this->lastupdate = SqlFunction::NOW();
 
         if ($updateDuedate)
             $this->updateEstDueDate();
