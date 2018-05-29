@@ -4149,11 +4149,7 @@ implements RestrictedAccess, Threadable, Searchable {
                  $attachments = $attachments->merge($response->getAttachments());
            }
 
-            $message = (string) $message;
-            if ($response) {
-                $message .= ($cfg->isRichTextEnabled()) ? "<br><br>" : "\n\n";
-                $message .= $response->getBody();
-            }
+            $message = $message;
 
             if ($vars['signature']=='mine')
                 $signature=$thisstaff->getSignature();
