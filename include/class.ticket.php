@@ -1676,6 +1676,7 @@ implements RestrictedAccess, Threadable, Searchable {
         global $cfg;
 
         $this->isanswered = 0;
+        $this->lastupdate = SqlFunction::NOW();
         $this->save();
 
 
