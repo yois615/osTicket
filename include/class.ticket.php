@@ -95,6 +95,7 @@ implements RestrictedAccess, Threadable, Searchable {
         )
     );
 
+    const PERM_ANSWER   = 'ticket.answer';
     const PERM_CREATE   = 'ticket.create';
     const PERM_EDIT     = 'ticket.edit';
     const PERM_ASSIGN   = 'ticket.assign';
@@ -106,6 +107,11 @@ implements RestrictedAccess, Threadable, Searchable {
     const PERM_DELETE   = 'ticket.delete';
 
     static protected $perms = array(
+            self::PERM_ANSWER => array(
+                'title' =>
+                /* @trans */ 'Answer',
+                'desc' =>
+                /* @trans */ 'Ability to mark tickets as answered/unanswered'),
             self::PERM_CREATE => array(
                 'title' =>
                 /* @trans */ 'Create',

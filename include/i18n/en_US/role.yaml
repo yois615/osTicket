@@ -17,6 +17,7 @@
     Role with unlimited access
 
   permissions: [
+    ticket.answer,
     ticket.create,
     ticket.edit,
     ticket.assign,
@@ -43,6 +44,7 @@
     Role with expanded access
 
   permissions: [
+    ticket.answer,
     ticket.create,
     ticket.edit,
     ticket.assign,
